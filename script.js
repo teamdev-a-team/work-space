@@ -1,6 +1,6 @@
 let winner=null;
 let allmark=true;
-let currentPlayer="foomer";
+let currentPlayer="former";
 let board=["","","","","","","","",""]
 const winningPaterns=[        //勝ちパターン保持
     [0,1,2],[3,4,5],[6,7,8],//横
