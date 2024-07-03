@@ -6,6 +6,7 @@ body {
     margin: 0;
     background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
     font-family: 'Arial', sans-serif;
+    color: #333;
 }
 
 .title-screen {
@@ -19,16 +20,17 @@ body {
     color: #333;
 }
 
-.title-board {
+.board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    grid-gap: 10px;
-    margin-bottom: 20px;
-    animation: autoPlay 2s infinite;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
-.title-screen button {
+.title-screen button, .replay button {
     padding: 15px 30px;
     font-size: 18px;
     cursor: pointer;
@@ -36,38 +38,35 @@ body {
     background-color: #4285f4;
     color: white;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
 }
 
-.title-screen button:hover {
+.title-screen button:hover, .replay button:hover {
     background-color: #357ae8;
-}
-
-.board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    grid-gap: 10px;
-    animation: fadeIn 1s ease-in-out;
+    transform: scale(1.05);
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background-color: #fff;
-    border: 2px solid #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 48px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    border: 5px solid #333;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .cell:hover {
     background-color: #e0e0e0;
     transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .result {
@@ -79,6 +78,12 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
+.replay {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -86,9 +91,4 @@ body {
     to {
         opacity: 1;
     }
-}
-
-@keyframes autoPlay {
-    0%, 100% { background-color: #fff; }
-    50% { background-color: #4285f4; color: white; }
 }
