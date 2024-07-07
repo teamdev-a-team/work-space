@@ -5,8 +5,7 @@ const winningPaterns=[        //勝ちパターン保持
     [0,3,6],[1,4,7],[2,5,8],//縦
     [0,4,8],[2,4,6]         //斜め
     ];
-const numberOfPlayer=document.getElementById("numberOfPlayer").value;//playerの数
-const strength=document.getElementById("strength").value;
+const mode=document.getElementById("mode").value;//playerの数
 class Board{
     constructor(){
         this.board = ["", "", "", "", "", "", "", "", ""];
@@ -18,10 +17,10 @@ function init(){
     //ボード表示の関数 
     winOrLose();
     playerChange();
-    if (numberOfPlayer=="2"){
+    if (mode=="pvp"){
         playermove();
     }
-    else if(strength=="strong"){
+    else if(mode=="cpu-strong"){
         minMax();
     }
     else{
