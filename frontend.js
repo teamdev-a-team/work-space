@@ -17,10 +17,11 @@ const titleMoves = [
 ];
 
 function handleClick(index) {
+    console.log(`Cell clicked: ${index}`);
     if (gameActive && board[index] === '') {
         board[index] = currentPlayer;
         updateCellUI(index);
-
+  
         if (checkWinner()) {
             endGame(`${currentPlayer}の勝ち!`);
         } else if (board.every(cell => cell !== '')) {
@@ -30,8 +31,8 @@ function handleClick(index) {
             if (mode !== 'pvp' && currentPlayer === 'O') {
                 setTimeout(() => cpuMove(mode === 'cpu-strong'), 500);
             }
-            saveGame();
         }
+        saveGame();
     }
 }
 
@@ -56,7 +57,6 @@ function getRandomMove() {
 }
 
 function getBestMove() {
-    // Implement a simple AI strategy for strong CPU
     const winningCombos = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -101,16 +101,20 @@ function startGame() {
 
 function resetGame() {
     currentPlayer = 'X';
-    board = ['', '', '', '', '', '', '', '', ''];
+    board = ['', '', '', '', '', '', '', '', '']; // 全てのセルを空文字列で初期化
     gameActive = true;
     document.getElementById('result').innerText = '';
     document.getElementById('replay').style.display = 'none';
-    updateBoardUI();
+    const cells = document.querySelectorAll('#board .cell');
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.className = 'cell'; // クラスをリセット
+    });
     saveGame();
 }
 
 function updateCellUI(index) {
-    const cell = document.querySelector(`.board .cell[data-index='${index}']`);
+    const cell = document.querySelector(`#board .cell[data-index='${index}']`);
     cell.innerText = currentPlayer;
     cell.style.color = currentPlayer === 'X' ? '#ff0000' : '#0000ff';
 }
@@ -122,6 +126,7 @@ function updateBoardUI() {
         cells[i].style.color = board[i] === 'X' ? '#ff0000' : '#0000ff';
     }
 }
+
 
 function endGame(message) {
     gameActive = false;
@@ -159,6 +164,38 @@ setInterval(autoPlayTitleBoard, 1000);
 
 document.addEventListener('DOMContentLoaded', () => {
     autoPlayTitleBoard();
+
+    // ゲームボードのセルにクリックイベントリスナーを追加
+    const cells = document.querySelectorAll('#board .cell');
+    cells.forEach((cell, index) => {
+        cell.addEventListener('click', () => handleClick(index));
+    });
+
+    // ゲーム開始ボタンにイベントリスナーを追加
+    const startButton = document.getElementById('start-button');
+    if (startButton) {
+        startButton.addEventListener('click', startGame);
+    }
+
+    // モード選択のセレクトボックスにイベントリスナーを追加
+    const modeSelect = document.getElementById('mode');
+    if (modeSelect) {
+        modeSelect.addEventListener('change', selectMode);
+    }
+
+    // リプレイボタンにイベントリスナーを追加
+    const replayButton = document.getElementById('replay-button');
+    if (replayButton) {
+        replayButton.addEventListener('click', resetGame);
+    }
+
+    // スタート画面に戻るボタンにイベントリスナーを追加
+    const returnButton = document.getElementById('return-button');
+    if (returnButton) {
+        returnButton.addEventListener('click', returnToStart);
+    }
+
+    // 保存されたゲーム状態があれば読み込む
     if (localStorage.getItem('tic-tac-toe-board')) {
         board = JSON.parse(localStorage.getItem('tic-tac-toe-board'));
         currentPlayer = localStorage.getItem('tic-tac-toe-currentPlayer');

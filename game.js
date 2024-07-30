@@ -102,4 +102,3 @@ function playerChange(){
         currentPlayer="former"
     }
 }
-

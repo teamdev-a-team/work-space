@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,31 +22,31 @@
             <div class="cell" data-index="7"></div>
             <div class="cell" data-index="8"></div>
         </div>
-        <button onclick="startGame()">START GAME!!</button>
+        <button id="start-button">START GAME!!</button>
         <div>
             <label for="mode">SELECT GAME MODE:</label>
-            <select id="mode" onchange="selectMode()">
+            <select id="mode">
                 <option value="pvp">VS PLAYER</option>
-                <option value="cpu-weak">VS CPU(EAZY)</option>
+                <option value="cpu-weak">VS CPU(EASY)</option>
                 <option value="cpu-strong">VS CPU(HARD)</option>
             </select>
         </div>
     </div>
     <div id="board" class="board" style="display: none;">
-        <div class="cell" data-index="0" onclick="handleClick(0)"></div>
-        <div class="cell" data-index="1" onclick="handleClick(1)"></div>
-        <div class="cell" data-index="2" onclick="handleClick(2)"></div>
-        <div class="cell" data-index="3" onclick="handleClick(3)"></div>
-        <div class="cell" data-index="4" onclick="handleClick(4)"></div>
-        <div class="cell" data-index="5" onclick="handleClick(5)"></div>
-        <div class="cell" data-index="6" onclick="handleClick(6)"></div>
-        <div class="cell" data-index="7" onclick="handleClick(7)"></div>
-        <div class="cell" data-index="8" onclick="handleClick(8)"></div>
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
     </div>
     <div id="result" class="result"></div>
     <div id="replay" class="replay" style="display: none;">
-        <button onclick="resetGame()">もう一度プレイ</button>
-        <button onclick="returnToStart()">スタート画面に戻る</button>
+        <button id="replay-button">もう一度プレイ</button>
+        <button id="return-button">スタート画面に戻る</button>
     </div>
 </body>
 </html>
