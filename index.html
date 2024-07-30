@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="frontend.js" defer></script>
+</head>
+<body>
+    <div id="title-screen" class="title-screen">
+        <h1>TIC TAC TOE</h1>
+        <div id="title-board" class="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <button id="start-button">START GAME!!</button>
+        <div>
+            <label for="mode">SELECT GAME MODE:</label>
+            <select id="mode">
+                <option value="pvp">VS PLAYER</option>
+                <option value="cpu-weak">VS CPU(EASY)</option>
+                <option value="cpu-strong">VS CPU(HARD)</option>
+            </select>
+        </div>
+    </div>
+    <div id="board" class="board" style="display: none;">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+    <div id="result" class="result"></div>
+    <div id="replay" class="replay" style="display: none;">
+        <button id="replay-button">もう一度プレイ</button>
+        <button id="return-button">スタート画面に戻る</button>
+    </div>
+</body>
+</html>
